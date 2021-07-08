@@ -32,7 +32,7 @@ func (m *DBMock) Get(id string) (Document, error) {
 }
 ```
 
-#### In the test, create an instance of you mock
+#### In the test, create an instance of your mock
 
 ```	dbMock := &database.DBMock{}```
 
@@ -40,4 +40,5 @@ func (m *DBMock) Get(id string) (Document, error) {
 
 ```
 // Return this on any argument passed in
-dbMock.On("Upsert", mock.Anything).Return(nil)```
+dbMock.On("Upsert", mock.Anything).Return(nil)
+```
