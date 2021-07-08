@@ -8,5 +8,5 @@ type Document struct {
 // API definition
 type DB interface {
 	Upsert(*Document) error
-	Get(id string) (Document, error)
+	Get(id string) (*Document, error)
 }
