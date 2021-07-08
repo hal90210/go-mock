@@ -6,7 +6,7 @@
 ```// API definition
 type DB interface {
 	Upsert(*Document) error
-	Get(id string) (Document, error)
+	Get(id string) (*Document, error)
 }
 ```
 
@@ -24,11 +24,11 @@ func (m *DBMock) Upsert(doc *Document) error {
 	return args.Error(0)
 }
 
-func (m *DBMock) Get(id string) (Document, error) {
+func (m *DBMock) Get(id string) (*Document, error) {
 	// gets
 	args := m.Called(id)
 	// returns
-	return args.Get(0).(Document), args.Error(1)
+	return args.Get(0).(*Document), args.Error(1)
 }
 ```
 
