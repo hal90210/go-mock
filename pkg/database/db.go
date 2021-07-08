@@ -6,7 +6,7 @@ type Document struct {
 }
 
 // API definition
-type DB interface {
+type DBLayer interface {
 	Upsert(*Document) error
 	Get(id string) (*Document, error)
 }
