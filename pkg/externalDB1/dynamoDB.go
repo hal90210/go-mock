@@ -15,6 +15,6 @@ func (db *DynamoDB) Upsert(*database.Document) error {
 	return nil
 }
 
-func (db *DynamoDB) Get(id string) (database.Document, error) {
-	return database.Document{}, nil
+func (db *DynamoDB) Get(id string) (*database.Document, error) {
+	return &database.Document{}, nil
 }
