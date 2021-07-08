@@ -8,7 +8,7 @@ import (
 )
 
 // external db interface
-var db database.DB
+var db database.DBLayer
 
 // API
 type MessageService interface {
@@ -20,7 +20,7 @@ type messageReciver struct {
 }
 
 // Constructor
-func NewMessageService(dbInstance database.DB) messageReciver {
+func NewMessageService(dbInstance database.DBLayer) messageReciver {
 
 	db = dbInstance
 
