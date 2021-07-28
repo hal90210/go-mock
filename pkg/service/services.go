@@ -7,9 +7,6 @@ import (
 	"github.com/scottski/di-test/pkg/database"
 )
 
-// external db interface
-var db database.DBLayer
-
 // API
 type MessageService interface {
 	RecieveMessage(msg string) (httpCode int, err error)
@@ -17,14 +14,12 @@ type MessageService interface {
 
 // Do not export, force clients to use New to get instance
 type messageReciver struct {
+	db database.DBLayer
 }
 
 // Constructor
 func NewMessageService(dbInstance database.DBLayer) messageReciver {
-
-	db = dbInstance
-
-	return messageReciver{}
+	return messageReciver{db: dbInstance}
 }
 
 // Handle http message sent from client - save to database
@@ -38,7 +33,7 @@ func (ms *messageReciver) RecieveMessage(msg string) (int, error) {
 
 	// apply validation/business logic
 
-	err := db.Upsert(&doc)
+	err := ms.db.Upsert(&doc)
 
 	if err != nil {
 		// Log error here or let caller log

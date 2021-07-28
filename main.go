@@ -13,4 +13,5 @@ func main() {
 
 	msgService := service.NewMessageService(&db)
 	msgService.RecieveMessage(msg)
+
 }
